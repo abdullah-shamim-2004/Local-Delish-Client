@@ -4,7 +4,7 @@ import useSecure from "../../Hooks/useSecure";
 
 const AddReview = () => {
   const { user } = useAuth();
-  const { api } = useSecure();
+  const api = useSecure();
 
   const handleAddReview = async (e) => {
     e.preventDefault();
@@ -13,7 +13,7 @@ const AddReview = () => {
     const foodImage = form.food_image.value;
     const restaurantName = form.resturent_name.value;
     const location = form.location.value;
-    const rating = form.rating.value;
+    const rating = parseFloat(form.rating.value) || 4.5;
     const reviewText = form.description.value;
     const userEmail = form.email.value;
     const userName = form.user_name.value;
@@ -22,13 +22,12 @@ const AddReview = () => {
       foodImage,
       restaurantName,
       location,
-      rating,
+      rating: Number(rating.toFixed(1)),
       reviewText,
       userEmail,
       userName,
       createdAt: new Date().toISOString(),
     };
-    // console.log(newReview);
     try {
       const res = await api.post("/reviews", newReview);
       console.log("Review added:", res.data);

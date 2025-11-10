@@ -32,7 +32,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm px-4 md:px-10">
+    <div className="navbar bg-base-100 px-4 md:px-10">
       {/* <ToastContainer></ToastContainer> */}
       <div className="navbar-start">
         <div className="dropdown">

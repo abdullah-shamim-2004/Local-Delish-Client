@@ -5,6 +5,9 @@ import Home from "../Pages/Home/Home";
 import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
+import AllReview from "../Pages/Reviews/AllReview";
+import AddReview from "../Pages/Reviews/AddReview";
+import MyReview from "../Pages/Reviews/MyReview";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +18,18 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home></Home>,
+      },
+      {
+        path: "/reviews",
+        element: <AllReview></AllReview>,
+      },
+      {
+        path: "/add-reviews",
+        element: <AddReview></AddReview>,
+      },
+      {
+        path: "/my-reviews",
+        element: <MyReview></MyReview>,
       },
     ],
   },

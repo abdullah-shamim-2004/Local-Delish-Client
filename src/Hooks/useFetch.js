@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import useSecure from "./useSecure";
 
 const useFetch = (endpoint) => {
-  const api = useSecure(); // axios instance
+  const api = useSecure(); 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

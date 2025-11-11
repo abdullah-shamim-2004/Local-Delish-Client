@@ -1,26 +1,58 @@
-
-
+import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import useFetch from "../../Hooks/useFetch";
 import ErrorPage from "../Error/ErrorPage";
 import Loader from "../Loader/Loader";
+import useSecure from "../../Hooks/useSecure";
+import { useEffect, useState } from "react";
 
 const MyReview = () => {
   const { user } = useAuth();
+  const api = useSecure();
   const {
-    data: reviews,
+    data: reviewsData,
     loading,
     error,
   } = useFetch(`/reviews?email=${user?.email}`);
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    if (reviewsData) setReviews(reviewsData);
+  }, [reviewsData]);
 
   if (loading) return <Loader />;
   if (error) return <ErrorPage />;
 
+  // Delete Function
+  const handleDelete = async (id) => {
+    const confirm = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to recover this review!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#e63946",
+      cancelButtonColor: "#6c757d",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (confirm.isConfirmed) {
+      try {
+        const res = await api.delete(`/reviews/${id}`);
+        if (res.data.success) {
+          Swal.fire("Deleted!", "Your review has been deleted.", "success");
+          setReviews(reviews.filter((r) => r._id !== id));
+        }
+      } catch (err) {
+        Swal.fire("Error!", err.message, "error");
+        
+      }
+    }
+  };
   return (
-    <div className="p-6">
+    <div className="p-6 max-[576px]:p-1.5 max-[576px]:w-fit">
       <h2 className="text-2xl font-bold mb-4">My Reviews ({reviews.length})</h2>
 
-      <div className="overflow-x-auto">
+      <div className="md:overflow-x-auto max-[576px]:w-fit">
         <table className="table w-full border">
           <thead>
             <tr className="bg-gray-100">
@@ -54,7 +86,7 @@ const MyReview = () => {
                     Edit
                   </button>
                   <button
-                    // onClick={() => handleDelete(review._id)}
+                    onClick={() => handleDelete(review._id)}
                     className="btn btn-sm btn-outline btn-error"
                   >
                     Delete

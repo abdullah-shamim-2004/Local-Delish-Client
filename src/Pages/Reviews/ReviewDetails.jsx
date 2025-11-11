@@ -31,7 +31,7 @@ const ReviewDetails = () => {
       <div className="card-body bg-amber-400 w-2/3 p-6 flex flex-col ">
         {/* Food & Restaurant */}
         <div>
-          <h2 className="text-2xl font-bold text-gray-800">
+          <h2 className="text-2xl font-bold text-secondary">
             {singleReview.foodName}
           </h2>
           <p className="text-sm text-gray-500">

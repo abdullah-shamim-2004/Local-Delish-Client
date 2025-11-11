@@ -3,8 +3,8 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #f3a623;
-  --color-secondary: teal;
+  --color-primary: #ffb900;
+  --color-secondary: #212121;
 }
 :root {
   --gold-crayola: hsl(38, 61%, 73%);
@@ -15,8 +15,8 @@
   --smoky-black-3: hsla(0, 3%, 7%, 1);
   --eerie-black-1: hsla(210, 4%, 9%, 1);
   --eerie-black-2: hsla(210, 4%, 11%, 1);
-  --eerie-black-3: hsla(180, 2%, 8%, 1);
-  --eerie-black-4: hsla(0, 0%, 13%, 1);
+  --eerie-black-3: #141515;
+  --eerie-black-4: #212121;
   --white: hsla(0, 0%, 100%, 1);
   --white-alpha-20: hsla(0, 0%, 100%, 0.2);
   --white-alpha-10: hsla(0, 0%, 100%, 0.1);

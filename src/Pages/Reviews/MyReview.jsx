@@ -5,6 +5,7 @@ import ErrorPage from "../Error/ErrorPage";
 import Loader from "../Loader/Loader";
 import useSecure from "../../Hooks/useSecure";
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const MyReview = () => {
   const { user } = useAuth();
@@ -44,7 +45,6 @@ const MyReview = () => {
         }
       } catch (err) {
         Swal.fire("Error!", err.message, "error");
-        
       }
     }
   };
@@ -79,12 +79,12 @@ const MyReview = () => {
                 <td>{new Date(review.createdAt).toLocaleDateString()}</td>
 
                 <td className="flex gap-2">
-                  <button
-                    // onClick={() => handleEdit(review)}
+                  <Link
+                    to={`/edit-reviews/${review._id}`}
                     className="btn btn-sm btn-outline btn-info"
                   >
                     Edit
-                  </button>
+                  </Link>
                   <button
                     onClick={() => handleDelete(review._id)}
                     className="btn btn-sm btn-outline btn-error"

@@ -9,6 +9,7 @@ import AllReview from "../Pages/Reviews/AllReview";
 import AddReview from "../Pages/Reviews/AddReview";
 import MyReview from "../Pages/Reviews/MyReview";
 import ReviewDetails from "../Pages/Reviews/ReviewDetails";
+import EditReview from "../Pages/Reviews/EditReview";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/reviews/:id",
         element: <ReviewDetails></ReviewDetails>,
+      },
+      {
+        path: "/edit-reviews/:id",
+        element: <EditReview></EditReview>,
       },
       {
         path: "/add-reviews",

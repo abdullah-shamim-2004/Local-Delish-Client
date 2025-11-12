@@ -11,6 +11,8 @@ import MyReview from "../Pages/Reviews/MyReview";
 import ReviewDetails from "../Pages/Reviews/ReviewDetails";
 import EditReview from "../Pages/Reviews/EditReview";
 import Favorites from "../Pages/Reviews/Favorites";
+import PrivateRoute from "./PrivateRoute";
+import AboutUs from "../Pages/About/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -28,23 +30,48 @@ const router = createBrowserRouter([
       },
       {
         path: "/reviews/:id",
-        element: <ReviewDetails></ReviewDetails>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <ReviewDetails></ReviewDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/edit-reviews/:id",
-        element: <EditReview></EditReview>,
+        element: (
+          <PrivateRoute>
+            <EditReview></EditReview>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/add-reviews",
-        element: <AddReview></AddReview>,
+        element: (
+          <PrivateRoute>
+            <EditReview></EditReview>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-reviews",
-        element: <MyReview></MyReview>,
+        element: (
+          <PrivateRoute>
+            <EditReview></EditReview>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-favorites",
-        element: <Favorites></Favorites>,
+        element: (
+          <PrivateRoute>
+            <Favorites></Favorites>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs></AboutUs>,
       },
     ],
   },

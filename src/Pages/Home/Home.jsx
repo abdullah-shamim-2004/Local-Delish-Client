@@ -5,6 +5,7 @@ import ErrorPage from "../Error/ErrorPage";
 import useFetch from "../../Hooks/useFetch";
 import { Link } from "react-router";
 import Bannar from "../../Components/Bannar/Bannar";
+import PopularResturent from "../Resturent/PopularResturent";
 
 const Home = () => {
   const { data: reviews, loading, error } = useFetch("/reviews?limit=6");
@@ -16,7 +17,7 @@ const Home = () => {
     <div>
       <div>
         <Bannar reviews={reviews}></Bannar>
-      </div>{" "}
+      </div>
       <div className="my-10">
         <div className="text-center space-y-2">
           <h1 className="text-4xl text-primary font-bold mb-1.5">
@@ -39,6 +40,7 @@ const Home = () => {
           </Link>
         </div>
       </div>
+      <PopularResturent></PopularResturent>
     </div>
   );
 };

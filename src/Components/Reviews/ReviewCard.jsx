@@ -1,12 +1,9 @@
 import { Star, Heart, ArrowRight } from "lucide-react";
-
 import { useNavigate } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 import useSecure from "../../Hooks/useSecure";
 import { toast, ToastContainer } from "react-toastify";
 
-import Loader from "../../Pages/Loader/Loader";
-import ErrorPage from "../../Pages/Error/ErrorPage";
 
 const ReviewCard = ({ review }) => {
   const navigate = useNavigate();
@@ -20,7 +17,6 @@ const ReviewCard = ({ review }) => {
     restaurantName,
     location,
     rating,
-    reviewText,
     userName,
     createdAt,
   } = review;
@@ -47,7 +43,7 @@ const ReviewCard = ({ review }) => {
       if (res.data.message) {
         toast.info(res.data.message);
       } else {
-        toast.success("Added to favorites ❤️");
+        toast.success("Added to favorites");
       }
     } catch (err) {
       console.error(" Error adding review:", err);
@@ -76,49 +72,38 @@ const ReviewCard = ({ review }) => {
       </div>
 
       {/* Food Info */}
-      <div>
-        <h3 className="text-xl font-semibold text-gold mb-1">{foodName}</h3>
-        <p className="text-sm text-gray-400">{restaurantName}</p>
-        <p className="text-xs text-gray-500 mb-2">{location}</p>
+      <h3 className="text-xl font-semibold text-gold mb-1">{foodName}</h3>
+      <p className="text-sm text-gray-400">{restaurantName}</p>
+      <p className="text-xs text-gray-500 mb-2">{location}</p>
 
-        {/*  Rating */}
-        <div className="flex items-center mb-2">
-          {[...Array(5)].map((_, i) => (
-            <Star
-              key={i}
-              size={18}
-              className={
-                i < Math.floor(rating)
-                  ? "text-yellow-400 fill-yellow-400"
-                  : "text-gray-600"
-              }
-            />
-          ))}
-          <span className="ml-2 text-sm text-gray-300">
-            ({rating.toFixed(1)})
-          </span>
-        </div>
-
-        {/* Review Text */}
-        <p className="text-gray-300 text-sm italic mb-4">
-          “
-          {reviewText.length > 90
-            ? reviewText.slice(0, 90) + "..."
-            : reviewText}
-          ”
-        </p>
+      {/*  Rating */}
+      <div className="flex items-center mb-2">
+        {[...Array(5)].map((_, i) => (
+          <Star
+            key={i}
+            size={18}
+            className={
+              i < Math.floor(rating)
+                ? "text-yellow-400 fill-yellow-400"
+                : "text-gray-600"
+            }
+          />
+        ))}
+        <span className="ml-2 text-sm text-gray-300">
+          ({rating.toFixed(1)})
+        </span>
       </div>
 
       {/* Bottom Buttons */}
       <div className="flex items-center justify-between text-xs text-gray-500 mt-auto pt-3 border-t border-gray-800">
         <div>
-          <p>👤 {userName}</p>
+          <p>{userName}</p>
           <p>{new Date(createdAt).toLocaleDateString()}</p>
         </div>
 
         <button
           onClick={() => navigate(`/reviews/${_id}`)}
-          className="flex cursor-pointer items-center gap-1 px-3 py-1.5 rounded-full bg-gold text-black font-medium hover:brightness-110 transition"
+          className="flex cursor-pointer items-center gap-1 px-3 py-1.5 rounded-full bg-primary text-black font-medium hover:brightness-110 transition"
           style={{ backgroundColor: "hsl(38, 61%, 73%)" }}
         >
           View Details

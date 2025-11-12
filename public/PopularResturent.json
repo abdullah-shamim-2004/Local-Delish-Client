@@ -2,16 +2,16 @@
   {
     "id": 1,
     "name": "Fakruddin Biriyani House",
-    "photo": "https://i.ibb.co.com/n3Tx8K7/fakruddin-biriyani.jpg",
+    "photo": "https://i.ibb.co.com/shxYtzJ/A-close-up-view-of-a-Banglades.jpg",
     "location": "Gulshan, Dhaka",
-    "rating": 4.8,
+    "rating": 5,
     "specialty": "Best for Authentic Kacchi Biriyani",
     "buttonText": "View Menu"
   },
   {
     "id": 2,
     "name": "Star Kabab & Restaurant",
-    "photo": "https://i.ibb.co.com/D7nbL4P/star-kabab.jpg",
+    "photo": "https://i.ibb.co.com/xqYJXDJ4/A-realistic-Dhaka-street-resta.jpg",
     "location": "Dhanmondi, Dhaka",
     "rating": 4.6,
     "specialty": "Famous for Grilled Chicken & Paratha",
@@ -20,37 +20,19 @@
   {
     "id": 3,
     "name": "Mejbani Ranna Ghor",
-    "photo": "https://i.ibb.co.com/v3dJZf1/mejbani-ranna-ghor.jpg",
+    "photo": "https://i.ibb.co.com/FLnr9vmk/A-cozy-Bangladeshi-restaurant.jpg",
     "location": "Agrabad, Chittagong",
-    "rating": 4.9,
+    "rating": 5,
     "specialty": "Authentic Mezbani Beef & Traditional Items",
     "buttonText": "View Menu"
   },
   {
     "id": 4,
     "name": "Pitha Ghar",
-    "photo": "https://i.ibb.co.com/TmJ7XkC/pitha-ghar.jpg",
+    "photo": "https://i.ibb.co.com/JjsJn2Cj/A-modern-cozy-restaurant-inter.jpg",
     "location": "Sylhet City Center",
     "rating": 4.7,
     "specialty": "Traditional Pitha & Sweet Delights",
-    "buttonText": "Visit Now"
-  },
-  {
-    "id": 5,
-    "name": "The Chillox",
-    "photo": "https://i.ibb.co.com/fQqDmn7/chillox-burger.jpg",
-    "location": "Banani, Dhaka",
-    "rating": 4.5,
-    "specialty": "Popular for Burgers & Milkshakes",
-    "buttonText": "View Menu"
-  },
-  {
-    "id": 6,
-    "name": "Salt Bistro & Café",
-    "photo": "https://i.ibb.co.com/SJ7zvRQ/salt-bistro.jpg",
-    "location": "Khulna City",
-    "rating": 4.6,
-    "specialty": "Romantic ambience with fusion dishes",
     "buttonText": "Visit Now"
   }
 ]

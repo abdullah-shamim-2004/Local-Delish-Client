@@ -1,4 +1,5 @@
 import React from "react";
+import { toast, ToastContainer } from "react-toastify";
 import useAuth from "../../Hooks/useAuth";
 import useSecure from "../../Hooks/useSecure";
 
@@ -29,15 +30,20 @@ const AddReview = () => {
       createdAt: new Date().toISOString(),
     };
     try {
-      const res = await api.post("/reviews", newReview);
-      console.log("Review added:", res.data);
+      await api.post("/reviews", newReview);
+      toast.success("Review added successfully!");
+      form.reset(); 
     } catch (err) {
-      console.error(" Error adding review:", err);
+      toast.error(err.message);
     }
+    //   } finally {
+    //     setLoading(false);
+    //   }
   };
 
   return (
     <div className="min-h-screen bg-base-200 flex justify-center items-center py-10">
+      <ToastContainer></ToastContainer>
       <form
         onSubmit={handleAddReview}
         className="bg-base-100 p-8 rounded-2xl shadow-lg w-full max-w-3xl"
@@ -150,10 +156,7 @@ const AddReview = () => {
         </div>
 
         {/* Submit Button */}
-        <button
-          type="submit"
-          className="btn w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white"
-        >
+        <button type="submit" className="btn w-full bg-primary text-black">
           Add Review
         </button>
       </form>

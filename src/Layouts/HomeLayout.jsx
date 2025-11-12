@@ -7,7 +7,11 @@ const HomeLayout = () => {
   return (
     <div className="max-w-screen-2xl mx-auto ">
       <Navbar></Navbar>
-      <Outlet></Outlet>
+      <main className="min-h-[80vh]">
+        {" "}
+        <Outlet></Outlet>
+      </main>
+
       <Footer></Footer>
     </div>
   );

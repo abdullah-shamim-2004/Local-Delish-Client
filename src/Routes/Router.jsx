@@ -49,7 +49,7 @@ const router = createBrowserRouter([
         path: "/add-reviews",
         element: (
           <PrivateRoute>
-            <EditReview></EditReview>
+            <AddReview></AddReview>
           </PrivateRoute>
         ),
       },
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
         path: "/my-reviews",
         element: (
           <PrivateRoute>
-            <EditReview></EditReview>
+            <MyReview></MyReview>
           </PrivateRoute>
         ),
       },

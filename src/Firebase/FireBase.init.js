@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCBHyuGAnU7qKxg6I8nXHt8cUGSfPxxOUU",
-  authDomain: "casacraft-a2f3f.firebaseapp.com",
-  projectId: "casacraft-a2f3f",
-  storageBucket: "casacraft-a2f3f.firebasestorage.app",
-  messagingSenderId: "600473643081",
-  appId: "1:600473643081:web:d0228ebe0a716b1d24b798",
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase

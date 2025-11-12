@@ -4,7 +4,6 @@ import useAuth from "../../Hooks/useAuth";
 import useSecure from "../../Hooks/useSecure";
 import { toast, ToastContainer } from "react-toastify";
 
-
 const ReviewCard = ({ review }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -104,7 +103,6 @@ const ReviewCard = ({ review }) => {
         <button
           onClick={() => navigate(`/reviews/${_id}`)}
           className="flex cursor-pointer items-center gap-1 px-3 py-1.5 rounded-full bg-primary text-black font-medium hover:brightness-110 transition"
-          style={{ backgroundColor: "hsl(38, 61%, 73%)" }}
         >
           View Details
           <ArrowRight size={16} />

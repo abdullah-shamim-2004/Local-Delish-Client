@@ -13,7 +13,7 @@ const PopularResturent = () => {
   //   const filterData = resturents.splice(0, 3);
   //   console.log(filterData);
   return (
-    <div className=" py-12 bg-base-200">
+    <div className="px-4 py-12 bg-base-200">
       <div className="text-center mb-10">
         <h2 className="text-3xl font-bold text-primary">
           Most Popular Resturent
@@ -22,7 +22,10 @@ const PopularResturent = () => {
       </div>
       <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-4 gap-2.5 ">
         {resturents.map((data) => (
-          <div className="card w-fit  shadow-sm hover:shadow-xl/20">
+          <div
+            key={data.id}
+            className="card w-fit  shadow-sm hover:shadow-xl/20"
+          >
             <figure>
               <img
                 className="rounded-t-xl"

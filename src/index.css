@@ -7,8 +7,9 @@
   --color-secondary: #212121;
 }
 a.active {
-  @apply text-primary;
+  @apply text-primary font-bold;
 }
+
 :root {
   --gold-crayola: hsl(38, 61%, 73%);
   --quick-silver: hsla(0, 0%, 65%, 1);

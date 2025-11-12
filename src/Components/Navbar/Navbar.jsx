@@ -76,35 +76,41 @@ const Navbar = () => {
         {user ? (
           <>
             <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className=" m-1">
-                <NavLink to="/profile">
-                  <div className="flex flex-col items-center ">
-                    <div
-                      className="tooltip tooltip-bottom"
-                      data-tip={user.displayName || "No User"}
-                    >
-                      {user.photoURL ? (
-                        <img
-                          src={user.photoURL}
-                          alt={user.displayName || "User"}
-                          className="w-10 h-10 rounded-full border cursor-pointer"
-                        />
-                      ) : (
-                        <FaUserCircle className="text-3xl text-gray-600 cursor-pointer" />
-                      )}
-                    </div>
+              <div tabIndex={0} role="button" className="m-1">
+                <div className="flex flex-col items-center">
+                  <div
+                    className="tooltip tooltip-bottom"
+                    data-tip={user.displayName || "No User"}
+                  >
+                    {user.photoURL ? (
+                      <img
+                        src={user.photoURL}
+                        alt={user.displayName || "User"}
+                        className="w-10 h-10 rounded-full border cursor-pointer"
+                      />
+                    ) : (
+                      <FaUserCircle className="text-3xl text-gray-600 cursor-pointer" />
+                    )}
                   </div>
-                </NavLink>
+                </div>
               </div>
+
+              {/* Dropdown Menu */}
               <ul
-                tabIndex="-1"
-                className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                tabIndex={0}
+                className="dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm"
               >
+                {/* <li>
+                  <NavLink to="/profile">My Profile</NavLink>
+                </li> */}
                 <li>
                   <NavLink to="/add-reviews">Add Reviews</NavLink>
                 </li>
                 <li>
                   <NavLink to="/my-reviews">My Reviews</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/my-favorites">My Favorites</NavLink>
                 </li>
                 <li>
                   <button

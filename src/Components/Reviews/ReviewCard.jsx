@@ -1,11 +1,17 @@
 import { Star, Heart, ArrowRight } from "lucide-react";
+
 import { useNavigate } from "react-router";
-// import { useState } from "react";
+import useAuth from "../../Hooks/useAuth";
+import useSecure from "../../Hooks/useSecure";
+import { toast, ToastContainer } from "react-toastify";
+
+import Loader from "../../Pages/Loader/Loader";
+import ErrorPage from "../../Pages/Error/ErrorPage";
 
 const ReviewCard = ({ review }) => {
-  //onFavorite
   const navigate = useNavigate();
-  //   const [isFav, setIsFav] = useState(false);
+  const { user } = useAuth();
+  const api = useSecure();
 
   const {
     _id,
@@ -19,33 +25,53 @@ const ReviewCard = ({ review }) => {
     createdAt,
   } = review;
 
-  // ❤️ Favorite handler
-  //   const handleFavorite = () => {
-  //     setIsFav(!isFav);
-  //     if (onFavorite) onFavorite(review); // callback to parent
-  //   };
+  // Favorite handler
+  const handleFavorite = async () => {
+    if (!user) {
+      toast.warning("Please login first!");
+      return;
+    }
+
+    const newfavorite = {
+      userEmail: user?.email,
+      foodId: _id,
+      foodName,
+      foodImage,
+      restaurantName,
+      createdAt,
+    };
+
+    try {
+      const res = await api.post("/my-favorites", newfavorite);
+      console.log("Review added:", res.data);
+      if (res.data.message) {
+        toast.info(res.data.message);
+      } else {
+        toast.success("Added to favorites ❤️");
+      }
+    } catch (err) {
+      console.error(" Error adding review:", err);
+      toast.error("Failed to add favorite");
+    }
+  };
 
   return (
     <div className="bg-[#111] text-white max-w-md rounded-2xl shadow-lg border border-gray-800 hover:shadow-xl transition-all duration-300 p-5 flex flex-col justify-between">
       {/* Image */}
+      <ToastContainer></ToastContainer>
       <div className="relative overflow-hidden rounded-xl mb-4">
         <img
           src={foodImage}
           alt={foodName}
-          className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+          className="w-full h-50 object-cover hover:scale-105 transition-transform duration-300"
         />
 
         {/* Favorite Button */}
         <button
-          //   onClick={handleFavorite}
+          onClick={handleFavorite}
           className="absolute top-3 right-3 p-2 bg-black/50 rounded-full hover:bg-black/80 transition"
         >
-          <Heart
-            size={20}
-            // className={`transition-all ${
-            //   isFav ? "fill-red-500 text-red-500 scale-110" : "text-gray-300"
-            // }`}
-          />
+          <Heart size={20} />
         </button>
       </div>
 
@@ -92,7 +118,7 @@ const ReviewCard = ({ review }) => {
 
         <button
           onClick={() => navigate(`/reviews/${_id}`)}
-          className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-gold text-black font-medium hover:brightness-110 transition"
+          className="flex cursor-pointer items-center gap-1 px-3 py-1.5 rounded-full bg-gold text-black font-medium hover:brightness-110 transition"
           style={{ backgroundColor: "hsl(38, 61%, 73%)" }}
         >
           View Details

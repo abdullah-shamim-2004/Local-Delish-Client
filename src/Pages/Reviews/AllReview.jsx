@@ -5,7 +5,7 @@ import Loader from "../Loader/Loader";
 import ErrorPage from "../Error/ErrorPage";
 import AOS from "aos";
 import "aos/dist/aos.css";
-// import { Link } from "react-router";
+
 
 const AllReview = () => {
   const [search, setSearch] = useState("");

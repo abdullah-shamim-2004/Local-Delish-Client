@@ -26,7 +26,7 @@ const ReviewCard = ({ review }) => {
   //   };
 
   return (
-    <div className="bg-[#111] text-white rounded-2xl shadow-lg border border-gray-800 hover:shadow-xl transition-all duration-300 p-5 max-w-sm flex flex-col justify-between">
+    <div className="bg-[#111] text-white max-w-md rounded-2xl shadow-lg border border-gray-800 hover:shadow-xl transition-all duration-300 p-5 flex flex-col justify-between">
       {/* Image */}
       <div className="relative overflow-hidden rounded-xl mb-4">
         <img
@@ -35,7 +35,7 @@ const ReviewCard = ({ review }) => {
           className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
         />
 
-        {/* ❤️ Favorite Button */}
+        {/* Favorite Button */}
         <button
           //   onClick={handleFavorite}
           className="absolute top-3 right-3 p-2 bg-black/50 rounded-full hover:bg-black/80 transition"
@@ -55,7 +55,7 @@ const ReviewCard = ({ review }) => {
         <p className="text-sm text-gray-400">{restaurantName}</p>
         <p className="text-xs text-gray-500 mb-2">{location}</p>
 
-        {/* ⭐ Rating */}
+        {/*  Rating */}
         <div className="flex items-center mb-2">
           {[...Array(5)].map((_, i) => (
             <Star

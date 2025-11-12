@@ -4,30 +4,31 @@ import Loader from "../Loader/Loader";
 import ErrorPage from "../Error/ErrorPage";
 import useFetch from "../../Hooks/useFetch";
 import { Link } from "react-router";
+import Bannar from "../../Components/Bannar/Bannar";
 
 const Home = () => {
-  const { data: reviews, loading, error } = useFetch("/reviews");
+  const { data: reviews, loading, error } = useFetch("/reviews?limit=6");
 
   if (loading) return <Loader></Loader>;
   if (error) return <ErrorPage></ErrorPage>;
 
   return (
-   <div>
-      {" "}
+    <div>
+      <div>
+        <Bannar reviews={reviews}></Bannar>
+      </div>{" "}
       <div className="my-10">
         <div className="text-center space-y-2">
           <h1 className="text-4xl text-primary font-bold mb-1.5">
-            Popular Winter Care Services
+            Popular Review
           </h1>
-          <p className="text-gray-700">
-            Explore All Winter Care Services in service page.
-          </p>
+          <p className="text-gray-700">Explore All Review in Reviews page.</p>
         </div>
 
-        <div className="mt-3 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-5">
-         {reviews.map((review) => (
-        <ReviewCard key={review._id} review={review}></ReviewCard>
-      ))}
+        <div className="mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-5">
+          {reviews.map((review) => (
+            <ReviewCard key={review._id} review={review}></ReviewCard>
+          ))}
         </div>
 
         <div className="flex justify-end">

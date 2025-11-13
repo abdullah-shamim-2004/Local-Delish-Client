@@ -1,6 +1,6 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaUtensils } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import AuthContext from "../../Context/AuthContext";
 
@@ -61,8 +61,8 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center justify-center gap-1.5">
-          {/* <img className="w-5 h-5" alt="" /> */}
-          <Link to="/" className=" normal-case text-xl font-bold">
+          <FaUtensils className="text-2xl text-secondary" />
+          <Link to="/" className=" normal-case text-2xl font-bold">
             Local<span className="text-primary">Delish</span>
           </Link>
         </div>

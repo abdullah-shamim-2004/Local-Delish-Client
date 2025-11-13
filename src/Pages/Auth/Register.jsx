@@ -19,6 +19,7 @@ const Register = () => {
     const photoURL = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
+    
     // Password validation regex
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
 
@@ -157,8 +158,17 @@ const Register = () => {
               className="input"
               placeholder="Password"
             />
+            {/* Password */}
+            <label className="label">Confirm Password</label>
+            <input
+              // name="password"
+              // type={ShowPassword ? "text" : "password"}
+              type="password"
+              className="input"
+              placeholder="Password"
+            />
             <div
-              className="absolute right-7 top-[60%] translate-y-[-25%] cursor-pointer text-gray-500"
+              className="absolute right-7 top-[43%] translate-y-[-25%] cursor-pointer text-gray-500"
               onClick={() => setShowPassword(!ShowPassword)}
             >
               {ShowPassword ? <FaEye /> : <FaEyeSlash />}

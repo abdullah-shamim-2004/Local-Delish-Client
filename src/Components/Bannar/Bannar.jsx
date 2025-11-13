@@ -27,12 +27,10 @@ const Bannar = ({ reviews }) => {
                 className="relative h-[80vh] w-full bg-center bg-cover flex items-center justify-center"
                 style={{ backgroundImage: `url(${review.foodImage})` }}
               >
-                {/* Dark gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
 
-                {/* Content */}
                 <div className="relative z-10 text-center text-white px-6 max-w-2xl">
-                  <h1 className="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg">
+                  <h1 className="text-2xl md:text-4xl font-bold mb-4 drop-shadow-lg">
                     {review.reviewText}
                   </h1>
                   <p className="text-sm md:text-lg text-gray-200 mb-6">
@@ -40,7 +38,7 @@ const Bannar = ({ reviews }) => {
                   </p>
                   <div className="flex flex-row gap-3 justify-center">
                     <Link to="/Reviews">
-                      <button className="px-6 py-2 bg-yellow-400 text-black font-semibold rounded-full hover:bg-yellow-500 transition duration-300">
+                      <button className="bg-primary text-white font-semibold px-6 py-2 rounded-full shadow-md hover:bg-amber-500 hover:scale-105 transition transform duration-300">
                         View Reviews
                       </button>
                     </Link>

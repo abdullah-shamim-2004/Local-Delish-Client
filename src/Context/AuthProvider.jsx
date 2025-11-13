@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { auth } from "../Firebase/FireBase.init";
@@ -28,6 +29,10 @@ const AuthProvider = ({ children }) => {
     });
     return () => unsubscribe();
   }, []);
+  //Component for update user profile
+  const updateUser = (updatedData) => {
+    return updateProfile(auth.currentUser, updatedData);
+  };
 
   //Component for signIn user with email and password
   const UserSignIn = (email, password) => {
@@ -50,6 +55,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     user,
     setUser,
+    updateUser,
     loading,
     UserSignIn,
     googleSignIn,

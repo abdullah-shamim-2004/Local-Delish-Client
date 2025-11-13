@@ -3,11 +3,13 @@ import { useNavigate } from "react-router";
 import useAuth from "../../Hooks/useAuth";
 import useSecure from "../../Hooks/useSecure";
 import { toast, ToastContainer } from "react-toastify";
+// import { useState } from "react";
 
 const ReviewCard = ({ review }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const api = useSecure();
+  // const [isFav, setIsFav] = useState(false);
 
   const {
     _id,
@@ -43,6 +45,7 @@ const ReviewCard = ({ review }) => {
         toast.info(res.data.message);
       } else {
         toast.success("Added to favorites");
+        // setIsFav(true);
       }
     } catch (err) {
       console.error(" Error adding review:", err);
@@ -51,9 +54,8 @@ const ReviewCard = ({ review }) => {
   };
 
   return (
-    <div className="bg-[#111] text-white max-w-md rounded-2xl shadow-lg border border-gray-800 hover:shadow-xl transition-all duration-300 p-5 flex flex-col justify-between">
-      {/* Image */}
-      <ToastContainer></ToastContainer>
+    <div className="bg-white text-gray-800 max-w-lg rounded-2xl shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300 p-5 flex flex-col justify-between">
+      <ToastContainer />
       <div className="relative overflow-hidden rounded-xl mb-4">
         <img
           src={foodImage}
@@ -61,21 +63,21 @@ const ReviewCard = ({ review }) => {
           className="w-full h-50 object-cover hover:scale-105 transition-transform duration-300"
         />
 
-        {/* Favorite Button */}
         <button
           onClick={handleFavorite}
-          className="absolute top-3 right-3 p-2 bg-black/50 rounded-full hover:bg-black/80 transition"
+          className="absolute cursor-pointer top-3 right-3 p-2 bg-white/70 backdrop-blur-md rounded-full hover:bg-white/90 shadow-sm transition"
         >
-          <Heart size={20} />
+          <Heart
+            size={20}
+            // className={isFav ? "fill-red-500 text-red-500" : "text-gray-500"}
+          />
         </button>
       </div>
 
-      {/* Food Info */}
-      <h3 className="text-xl font-semibold text-gold mb-1">{foodName}</h3>
-      <p className="text-sm text-gray-400">{restaurantName}</p>
-      <p className="text-xs text-gray-500 mb-2">{location}</p>
+      <h3 className="text-xl font-semibold text-gray-900 mb-1">{foodName}</h3>
+      <p className="text-sm text-gray-500">{restaurantName}</p>
+      <p className="text-xs text-gray-400 mb-2">{location}</p>
 
-      {/*  Rating */}
       <div className="flex items-center mb-2">
         {[...Array(5)].map((_, i) => (
           <Star
@@ -84,25 +86,26 @@ const ReviewCard = ({ review }) => {
             className={
               i < Math.floor(rating)
                 ? "text-yellow-400 fill-yellow-400"
-                : "text-gray-600"
+                : "text-gray-300"
             }
           />
         ))}
-        <span className="ml-2 text-sm text-gray-300">
+        <span className="ml-2 text-sm text-gray-600">
           ({rating.toFixed(1)})
         </span>
       </div>
 
-      {/* Bottom Buttons */}
-      <div className="flex items-center justify-between text-xs text-gray-500 mt-auto pt-3 border-t border-gray-800">
+      <div className="flex items-center justify-between text-xs text-gray-500 mt-auto pt-3 border-t border-gray-100">
         <div>
-          <p>{userName}</p>
-          <p>{new Date(createdAt).toLocaleDateString()}</p>
+          <p className="font-medium text-gray-700">{userName}</p>
+          <p className="text-gray-400">
+            {new Date(createdAt).toLocaleDateString()}
+          </p>
         </div>
 
         <button
           onClick={() => navigate(`/reviews/${_id}`)}
-          className="flex cursor-pointer items-center gap-1 px-3 py-1.5 rounded-full bg-primary text-black font-medium hover:brightness-110 transition"
+          className="flex cursor-pointer items-center gap-1 px-3 py-1.5 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 text-white font-medium hover:scale-105 transition"
         >
           View Details
           <ArrowRight size={16} />

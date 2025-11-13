@@ -5,13 +5,12 @@ import React, { useEffect, useState } from "react";
 const PopularResturent = () => {
   const [resturents, setResturents] = useState([]);
 
+//This data(popular resturents) come from public folder, Developer don't store this data in mongodb. 
   useEffect(() => {
     axios("../PopularResturent.json")
       .then((res) => setResturents(res.data))
       .catch((error) => console.log(error));
   }, []);
-  //   const filterData = resturents.splice(0, 3);
-  //   console.log(filterData);
   return (
     <div className="px-4 py-12 bg-base-200">
       <div className="text-center mb-10">

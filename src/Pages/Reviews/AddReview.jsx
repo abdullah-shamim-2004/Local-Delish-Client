@@ -32,13 +32,10 @@ const AddReview = () => {
     try {
       await api.post("/reviews", newReview);
       toast.success("Review added successfully!");
-      form.reset(); 
+      form.reset();
     } catch (err) {
       toast.error(err.message);
     }
-    //   } finally {
-    //     setLoading(false);
-    //   }
   };
 
   return (
@@ -110,11 +107,14 @@ const AddReview = () => {
 
         {/* rating */}
         <div className="mb-4">
-          <label className="label font-medium">rating</label>
+          <label className="label font-medium">Rating</label>
           <input
             type="number"
             name="rating"
-            placeholder="e.g 4.5"
+            placeholder="e.g. 4.5"
+            min="1"
+            max="5"
+            step="0.1" 
             className="input input-bordered w-full"
           />
         </div>

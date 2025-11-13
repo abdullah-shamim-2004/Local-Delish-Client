@@ -45,7 +45,6 @@ const AddReview = () => {
         onSubmit={handleAddReview}
         className="bg-base-100 p-8 rounded-2xl shadow-lg w-full max-w-3xl"
       >
-        {/* Back Button */}
         <button
           onClick={() => window.history.back()}
           type="button"
@@ -114,7 +113,7 @@ const AddReview = () => {
             placeholder="e.g. 4.5"
             min="1"
             max="5"
-            step="0.1" 
+            step="0.1"
             className="input input-bordered w-full"
           />
         </div>

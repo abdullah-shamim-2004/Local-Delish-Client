@@ -1,4 +1,4 @@
-// src/components/Banner.jsx
+
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";

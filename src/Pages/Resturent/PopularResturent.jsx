@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 const PopularResturent = () => {
   const [resturents, setResturents] = useState([]);
 
-//This data(popular resturents) come from public folder, Developer don't store this data in mongodb. 
+//This data(popular resturents) come from public folder, Developer didn't store this data in mongodb. 
   useEffect(() => {
     axios("../PopularResturent.json")
       .then((res) => setResturents(res.data))

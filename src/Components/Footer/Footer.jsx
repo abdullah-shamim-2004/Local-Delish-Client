@@ -1,6 +1,6 @@
 import React from "react";
 import { FaFacebookF, FaInstagram, FaEnvelope } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6"; // ✅ New X (Twitter) logo
+import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router";
 
 const Footer = () => {

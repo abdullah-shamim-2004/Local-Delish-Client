@@ -1,5 +1,4 @@
 import React from "react";
-// import Error404 from "../../assets/error-404.png";
 import { Link } from "react-router";
 
 const ErrorPage = () => {
@@ -16,10 +15,7 @@ const ErrorPage = () => {
         <h2 className="card-title text-4xl ">Oops, page not found!</h2>
         <p>The page you are looking for is not available.</p>
 
-        <Link
-          to="/"
-          className="btn border-none bg-primary text-black"
-        >
+        <Link to="/" className="btn border-none bg-primary text-black">
           Go Back!
         </Link>
       </div>

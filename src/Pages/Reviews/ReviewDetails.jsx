@@ -3,18 +3,17 @@ import { useParams } from "react-router";
 import useFetch from "../../Hooks/useFetch";
 import Loader from "../Loader/Loader";
 import ErrorPage from "../Error/ErrorPage";
-// import useSecure from "../../Hooks/useSecure";
 
 const ReviewDetails = () => {
   const { id } = useParams();
-  //   console.log(id);
+
 
   const { data: review, loading, error } = useFetch(`/reviews/${id}`);
 
   if (error) return <ErrorPage></ErrorPage>;
   const singleReview = review?.review || review;
 
-  // console.log(singleReview);
+
 
   return (
     <div>
@@ -53,7 +52,7 @@ const ReviewDetails = () => {
               {/* Rating */}
               <div className="flex items-center gap-2">
                 <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full font-medium">
-                  ⭐ {singleReview.rating}/5
+                  {singleReview.rating}/5
                 </span>
               </div>
 

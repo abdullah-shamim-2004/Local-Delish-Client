@@ -33,7 +33,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-base-100 px-4 md:px-10">
-      {/* <ToastContainer></ToastContainer> */}
+      <ToastContainer></ToastContainer>
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -95,7 +95,6 @@ const Navbar = () => {
                 </div>
               </div>
 
-              {/* Dropdown Menu */}
               <ul
                 tabIndex={0}
                 className="dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm"

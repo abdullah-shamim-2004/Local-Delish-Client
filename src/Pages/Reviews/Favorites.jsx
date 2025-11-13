@@ -1,9 +1,6 @@
 import Swal from "sweetalert2";
-
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
 import useAuth from "../../Hooks/useAuth";
-
 import useFetch from "../../Hooks/useFetch";
 import Loader from "../Loader/Loader";
 import ErrorPage from "../Error/ErrorPage";
@@ -41,7 +38,6 @@ const Favorites = () => {
           <h2 className="text-4xl font-bold text-gray-600 mb-3">
             No Favorite Review Found!
           </h2>
-         
         </div>
       ) : (
         <div className="md:overflow-x-auto max-[576px]:w-fit">
@@ -71,12 +67,6 @@ const Favorites = () => {
                   <td>{new Date(fav.createdAt).toLocaleDateString()}</td>
 
                   <td className="flex gap-2">
-                    {/* <Link
-                    to={`/edit-reviews/${review._id}`}
-                    className="btn btn-sm btn-outline btn-info"
-                  >
-                    Edit
-                  </Link> */}
                     <button
                       onClick={() => handleDelete()}
                       className="btn btn-sm btn-outline btn-error"

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 const PopularResturent = () => {
   const [resturents, setResturents] = useState([]);
 
-//This data(popular resturents) come from public folder, Developer didn't store this data in mongodb. 
+  //This data(popular resturents) come from public folder, Developer didn't store this data in mongodb.
   useEffect(() => {
     axios("../PopularResturent.json")
       .then((res) => setResturents(res.data))
@@ -13,15 +13,20 @@ const PopularResturent = () => {
   }, []);
   return (
     <div className="px-4 py-12 bg-base-200">
-      <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold text-primary">
-          Most Popular Resturent
+      <div className="text-center my-10">
+        <h2 className="text-3xl lg:text-5xl font-extrabold text-primary mb-3">
+          Most Popular Restaurants
         </h2>
-        <p className="text-gray-500 mt-2">Here is the most popular Resturent</p>
+        <p className="text-gray-600 max-w-xl mx-auto">
+          Discover the local favorites loved by our community — taste the best
+          of LocalDelish!
+        </p>
+        <div className="w-24 h-1 bg-amber-400 rounded-full mt-4 mx-auto"></div>
       </div>
       <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-4 gap-2.5 ">
         {resturents.map((data) => (
           <div
+            // data-aos="fade-up"
             key={data.id}
             className="card w-fit  shadow-sm hover:shadow-xl/20"
           >

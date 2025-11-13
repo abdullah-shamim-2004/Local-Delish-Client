@@ -19,7 +19,7 @@ const Register = () => {
     const photoURL = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    
+
     // Password validation regex
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
 
@@ -220,7 +220,7 @@ const Register = () => {
             </button>
             <p className="text-md font-semibold text-center my-1.5">
               Already Have An Account ?{" "}
-              <Link className="text-secondary" to="/auth/login">
+              <Link className="text-primary" to="/auth/login">
                 Login
               </Link>{" "}
             </p>

@@ -3,9 +3,8 @@ import ReviewCard from "../../Components/Reviews/ReviewCard";
 import useFetch from "../../Hooks/useFetch";
 import Loader from "../Loader/Loader";
 import ErrorPage from "../Error/ErrorPage";
-import AOS from "aos";
-import "aos/dist/aos.css";
-
+// import AOS from "aos";
+// import "aos/dist/aos.css";
 
 const AllReview = () => {
   const [search, setSearch] = useState("");
@@ -19,28 +18,37 @@ const AllReview = () => {
     setSearch(e.target.value);
     setIsSearching(true);
   };
-  setTimeout(() => {
-    setIsSearching(false);
-  }, 500);
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      offset: 100,
-      easing: "ease-in-out",
-      once: true,
-    });
-  }, []);
+    const timer = setTimeout(() => setIsSearching(false), 400);
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  // useEffect(() => {
+  //   AOS.init({
+  //     duration: 1000,
+  //     offset: 100,
+  //     easing: "ease-in-out",
+  //     once: true,
+  //   });
+  // }, []);
+  // useEffect(() => {
+  //   AOS.refresh();
+  // }, [reviews]);
   const showLoader = loading || isSearching;
 
   if (error) return <ErrorPage></ErrorPage>;
 
   return (
     <div className="min-h-[80vh]">
-      <div className="flex flex-col items-center my-8 ">
-        <h1 className="text-2xl text-primary lg:text-5xl font-bold mb-1.5">
-          All Review
+      <div className="flex flex-col items-center text-center my-10">
+        <h1 className="text-3xl lg:text-5xl font-extrabold text-primary mb-3">
+          All Reviews
         </h1>
-        <p className="text-gray-700 ">Explore All Review here</p>
+        <p className="text-gray-600 max-w-xl">
+          Discover honest opinions from our foodie community — explore every
+          bite, every story!
+        </p>
+        <div className="w-24 h-1 bg-amber-400 rounded-full mt-4"></div>
       </div>
 
       <div className="my-3.5 mb-4 flex justify-between items-center">

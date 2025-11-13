@@ -1,40 +1,47 @@
-import React, { use } from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import { FaUserCircle, FaUtensils } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import AuthContext from "../../Context/AuthContext";
 
 const Navbar = () => {
-  const { user, UserSignOut } = use(AuthContext);
+  const { user, UserSignOut } = useContext(AuthContext);
 
   const handleSignOut = () => {
     UserSignOut()
       .then(() => {
-        toast("You signed out successfully.");
+        toast.success("You signed out successfully!");
       })
       .catch((error) => {
-        toast.error(error);
+        toast.error(error.message);
       });
   };
+
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" className="nav-link">
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/reviews">Reviews</NavLink>
+        <NavLink to="/reviews" className="nav-link">
+          Reviews
+        </NavLink>
       </li>
-
       <li>
-        <NavLink to="/about-us">About Us</NavLink>
+        <NavLink to="/about-us" className="nav-link">
+          About Us
+        </NavLink>
       </li>
     </>
   );
 
   return (
-    <div className="navbar bg-base-100 px-4 md:px-10">
-      <ToastContainer></ToastContainer>
+    <div className="navbar bg-base-100 shadow-sm px-4 md:px-10 sticky top-0 z-50">
+      <ToastContainer />
       <div className="navbar-start">
+        {/* Mobile Dropdown */}
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -60,68 +67,65 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
+
+        {/* Logo */}
         <div className="flex items-center justify-center gap-1.5">
           <FaUtensils className="text-2xl text-secondary" />
-          <Link to="/" className=" normal-case text-2xl font-bold">
+          <Link to="/" className="normal-case text-2xl font-bold">
             Local<span className="text-primary">Delish</span>
           </Link>
         </div>
       </div>
 
+      {/* Desktop Menu */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal px-1 space-x-2">{links}</ul>
       </div>
 
+      {/* User Section */}
       <div className="navbar-end flex items-center gap-3">
         {user ? (
-          <>
-            <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="m-1">
-                <div className="flex flex-col items-center">
-                  <div
-                    className="tooltip tooltip-bottom"
-                    data-tip={user.displayName || "No User"}
-                  >
-                    {user.photoURL ? (
-                      <img
-                        src={user.photoURL}
-                        alt={user.displayName || "User"}
-                        className="w-10 h-10 rounded-full border cursor-pointer"
-                      />
-                    ) : (
-                      <FaUserCircle className="text-3xl text-gray-600 cursor-pointer" />
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              <ul
-                tabIndex={0}
-                className="dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm"
+          <div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="m-1">
+              <div
+                className="tooltip tooltip-bottom"
+                data-tip={user.displayName || "No User"}
               >
-                {/* <li>
-                  <NavLink to="/profile">My Profile</NavLink>
-                </li> */}
-                <li>
-                  <NavLink to="/add-reviews">Add Reviews</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/my-reviews">My Reviews</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/my-favorites">My Favorites</NavLink>
-                </li>
-                <li>
-                  <button
-                    onClick={handleSignOut}
-                    className="btn btn-outline btn-primary btn-sm"
-                  >
-                    Logout
-                  </button>
-                </li>
-              </ul>
+                {user.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    alt={user.displayName || "User"}
+                    className="w-10 h-10 rounded-full border cursor-pointer"
+                  />
+                ) : (
+                  <FaUserCircle className="text-3xl text-gray-600 cursor-pointer" />
+                )}
+              </div>
             </div>
-          </>
+
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm"
+            >
+              <li>
+                <NavLink to="/add-reviews">Add Reviews</NavLink>
+              </li>
+              <li>
+                <NavLink to="/my-reviews">My Reviews</NavLink>
+              </li>
+              <li>
+                <NavLink to="/my-favorites">My Favorites</NavLink>
+              </li>
+              <li>
+                <button
+                  onClick={handleSignOut}
+                  className="btn btn-outline btn-primary btn-sm"
+                >
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
         ) : (
           <Link to="/auth/login" className="btn btn-primary btn-sm">
             Login

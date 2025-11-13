@@ -173,7 +173,7 @@ const Login = () => {
               Dont’t Have An Account ?{" "}
               <Link
                 state={location?.state}
-                className="text-secondary"
+                className="text-primary"
                 to="/auth/register"
               >
                 Register

@@ -24,11 +24,15 @@ const Home = () => {
         <Bannar reviews={reviews}></Bannar>
       </div>
       <div className="mx-auto my-8">
-        <div className="text-center space-y-2">
-          <h1 className="text-3xl text-primary font-bold mb-1.5">
-            Popular Review
+        <div className="text-center my-10">
+          <h1 className="text-3xl lg:text-5xl font-extrabold text-primary mb-3">
+            Featured Reviews
           </h1>
-          <p className="text-gray-700">Explore All Review in Reviews page.</p>
+          <p className="text-gray-600 max-w-xl mx-auto">
+            Handpicked food stories and top-rated dishes — see what’s trending
+            in the LocalDelish community!
+          </p>
+          <div className="w-24 h-1 bg-amber-400 rounded-full mt-4 mx-auto"></div>
         </div>
 
         <div className="mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-5">
@@ -39,7 +43,7 @@ const Home = () => {
 
         <div className="flex justify-end">
           <Link to="/reviews">
-            <button className="bg-primary text-white font-semibold my-2.5  px-8 py-3 rounded-full shadow-md hover:bg-amber-500 hover:scale-105 transition transform duration-300">
+            <button className="bg-primary cursor-pointer text-white font-semibold my-2.5  px-8 py-3 rounded-full shadow-md hover:bg-amber-500 hover:scale-105 transition transform duration-300">
               Show All
             </button>
           </Link>

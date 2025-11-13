@@ -38,7 +38,7 @@ const Bannar = ({ reviews }) => {
                   </p>
                   <div className="flex flex-row gap-3 justify-center">
                     <Link to="/Reviews">
-                      <button className="bg-primary text-white font-semibold px-6 py-2 rounded-full shadow-md hover:bg-amber-500 hover:scale-105 transition transform duration-300">
+                      <button className="bg-primary cursor-pointer text-white font-semibold px-6 py-2 rounded-full shadow-md hover:bg-amber-500 hover:scale-105 transition transform duration-300">
                         View Reviews
                       </button>
                     </Link>

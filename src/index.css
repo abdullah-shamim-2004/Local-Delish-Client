@@ -3,9 +3,32 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #ffb900;
+  --color-primary: #ff8e00;
   --color-secondary: #212121;
 }
-a.active {
-  @apply text-primary font-bold;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
 }
+a.active {
+  @apply text-primary font-bold relative transition-all duration-300;
+}
+
+a.active::after {
+  content: "";
+  @apply absolute left-0 bottom-0 w-full h-[2px] bg-primary rounded-full;
+  transform: scaleX(1);
+  transition: transform 0.3s ease-in-out;
+}
+
+a:not(.active)::after {
+  content: "";
+  @apply absolute left-0 bottom-0 w-full h-[2px] bg-transparent;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* a:hover::after {
+  @apply bg-primary;
+  transform: scaleX(1);
+} */

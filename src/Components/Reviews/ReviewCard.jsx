@@ -54,7 +54,10 @@ const ReviewCard = ({ review }) => {
   };
 
   return (
-    <div className="bg-white text-gray-800 max-w-lg rounded-2xl shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300 p-5 flex flex-col justify-between">
+    <div
+      // data-aos="fade-up"
+      className="bg-white text-gray-800 max-w-lg rounded-2xl shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300 p-5 flex flex-col justify-between"
+    >
       <ToastContainer />
       <div className="relative overflow-hidden rounded-xl mb-4">
         <img

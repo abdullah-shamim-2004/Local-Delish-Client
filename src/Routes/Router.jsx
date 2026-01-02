@@ -13,6 +13,10 @@ import EditReview from "../Pages/Reviews/EditReview";
 import Favorites from "../Pages/Reviews/Favorites";
 import PrivateRoute from "./PrivateRoute";
 import AboutUs from "../Pages/About/AboutUs";
+import Blog from "../Pages/Blog/Blog";
+import Contact from "../Pages/Contact/Contact";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import DashboardHome from "../Pages/Dashboard/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -30,48 +34,50 @@ const router = createBrowserRouter([
       },
       {
         path: "/reviews/:id",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <ReviewDetails></ReviewDetails>
-          </PrivateRoute>
-        ),
+        element: <ReviewDetails></ReviewDetails>,
       },
-      {
-        path: "/edit-reviews/:id",
-        element: (
-          <PrivateRoute>
-            <EditReview></EditReview>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/add-reviews",
-        element: (
-          <PrivateRoute>
-            <AddReview></AddReview>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/my-reviews",
-        element: (
-          <PrivateRoute>
-            <MyReview></MyReview>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/my-favorites",
-        element: (
-          <PrivateRoute>
-            <Favorites></Favorites>
-          </PrivateRoute>
-        ),
-      },
+
       {
         path: "/about-us",
         element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <DashboardHome></DashboardHome>,
+      },
+      {
+        path: "add-reviews",
+        element: <AddReview></AddReview>,
+      },
+      {
+        path: "my-reviews",
+        element: <MyReview></MyReview>,
+      },
+      {
+        path: "edit-reviews/:id",
+        element: <EditReview></EditReview>,
+      },
+      {
+        path: "my-favorites",
+        element: <Favorites></Favorites>,
       },
     ],
   },

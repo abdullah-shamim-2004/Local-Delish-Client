@@ -16,7 +16,7 @@ const ReviewDetails = () => {
       {loading ? (
         <Loader></Loader>
       ) : (
-        <div className="card card-side bg-base-100 shadow-md hover:shadow-lg transition duration-300 rounded-2xl overflow-hidden">
+        <div className="card card-side mt-2 bg-base-100 shadow-md hover:shadow-lg transition duration-300 rounded-2xl overflow-hidden">
           {/* Image Section */}
           <figure className="w-1/3">
             <img
@@ -26,7 +26,7 @@ const ReviewDetails = () => {
             />
           </figure>
 
-          <div className="card-body bg-primary w-2/3 p-6 flex flex-col ">
+          <div className="card-body  w-2/3 p-6 flex flex-col ">
             {/* Food */}
             <div>
               <h2 className="text-2xl font-bold text-secondary">

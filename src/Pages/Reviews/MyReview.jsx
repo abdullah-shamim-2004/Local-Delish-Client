@@ -89,7 +89,7 @@ const MyReview = () => {
 
                   <td className="flex gap-2">
                     <Link
-                      to={`/edit-reviews/${review._id}`}
+                      to={`/dashboard/edit-reviews/${review._id}`}
                       className="btn btn-sm btn-outline btn-info"
                     >
                       Edit

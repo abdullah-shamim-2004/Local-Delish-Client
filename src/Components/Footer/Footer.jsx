@@ -42,18 +42,17 @@ const Footer = () => {
           <Link to="/reviews" className="link link-hover">
             All Reviews
           </Link>
-          <Link to="/add-review" className="link link-hover">
+          <Link to="/dashboard/add-reviews" className="link link-hover">
             Add Review
           </Link>
-          <Link to="/favorites" className="link link-hover">
+          <Link to="/dashboard/my-favorites" className="link link-hover">
             My Favorites
           </Link>
-           <Link to="/" className="link link-hover">
+          <Link to="/" className="link link-hover">
             Top Restaurants
           </Link>
         </div>
 
-   
         <div>
           <h6 className="footer-title text-primary">Company</h6>
           <Link to="/about-us" className="link link-hover">
@@ -61,12 +60,6 @@ const Footer = () => {
           </Link>
           <Link to="/contact" className="link link-hover">
             Contact
-          </Link>
-          <Link to="/careers" className="link link-hover">
-            Careers
-          </Link>
-          <Link to="/blog" className="link link-hover">
-            Blog
           </Link>
         </div>
 

@@ -4,8 +4,8 @@ import useAuth from "./useAuth";
 
 //axios instance.
 export const api = axios.create({
-  // baseURL: "https://local-delish-server.vercel.app/",
-  baseURL: "http://localhost:3000/",
+  baseURL: "https://local-delish-server.vercel.app/",
+  // baseURL: "http://localhost:3000/",
   headers: {
     "Content-Type": "application/json",
   },

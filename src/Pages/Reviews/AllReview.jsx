@@ -15,7 +15,6 @@ const AllReview = () => {
   const [sort, setSort] = useState("");
   const [page, setPage] = useState(1);
   const limit = 8;
-  console.log(rating, location, sort, page);
 
   const {
     data: reviews,
@@ -78,7 +77,7 @@ const AllReview = () => {
           <option value="">Sort By</option>
           <option value="newest">Newest</option>
           <option value="oldest">Oldest</option>
-          <option value="rating">Highest Rating</option>
+          {/* <option value="rating">Highest Rating</option> */}
         </select>
 
         <label className="input flex items-center border rounded-md px-2">
@@ -116,7 +115,7 @@ const AllReview = () => {
         </div>
       ) : (
         <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {reviews.map((review) => (
+          {reviews?.reviews?.map((review) => (
             <ReviewCard key={review._id} review={review}></ReviewCard>
           ))}
         </div>
@@ -125,7 +124,15 @@ const AllReview = () => {
         <button disabled={page == 1} onClick={() => setPage(page - 1)}>
           <FaArrowLeft />
         </button>
-        {page}
+        {[...Array(reviews?.totalPages).keys()].map((num) => (
+          <button
+            key={num}
+            onClick={() => setPage(num + 1)}
+            className={page === num + 1 ? "bg-primary px-1.5 text-white" : ""}
+          >
+            {num + 1}
+          </button>
+        ))}
         <button onClick={() => setPage(page + 1)}>
           <FaArrowRight />
         </button>

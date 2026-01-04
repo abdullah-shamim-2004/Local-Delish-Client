@@ -4,16 +4,19 @@ import useAuth from "../../Hooks/useAuth";
 import useFetch from "../../Hooks/useFetch";
 import Loader from "../Loader/Loader";
 import ErrorPage from "../Error/ErrorPage";
-import { toast, ToastContainer } from "react-toastify";
+import useSecure from "../../Hooks/useSecure";
+// import { toast, ToastContainer } from "react-toastify";
 
 const Favorites = () => {
   const { user } = useAuth();
+  const api = useSecure();
   const [favorite, setFavorite] = useState([]);
 
   const {
     data: favoriteData,
     loading,
     error,
+    // refetch,
   } = useFetch(`/my-favorites?email=${user?.email}`);
 
   useEffect(() => {
@@ -23,12 +26,38 @@ const Favorites = () => {
   if (loading) return <Loader />;
   if (error) return <ErrorPage />;
 
-  const handleDelete = () => {
-    toast.warning("Sorry! Developer do not impliment Delete function");
+  const handleDelete = async (id) => {
+    // toast.warning("Sorry! Developer do not impliment Delete function");
+    const conferm = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
+    if (conferm.isConfirmed) {
+      try {
+        const res = await api.delete(`/my-favorites/${id}`);
+        if (res.data.success) {
+          // console.log(res.data);
+
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+        }
+      } catch (err) {
+        Swal.fire("Error!", err.message, "error");
+        // console.log(error);
+      }
+    }
   };
   return (
     <div className="p-6 max-[576px]:p-1.5 max-[576px]:w-fit">
-      <ToastContainer></ToastContainer>
+      {/* <ToastContainer></ToastContainer> */}
       <h2 className="text-2xl font-bold mb-4">
         My Favorite Reviews ({favorite.length})
       </h2>
@@ -68,7 +97,7 @@ const Favorites = () => {
 
                   <td className="flex gap-2">
                     <button
-                      onClick={() => handleDelete()}
+                      onClick={() => handleDelete(fav._id)}
                       className="btn btn-sm btn-outline btn-error"
                     >
                       Delete

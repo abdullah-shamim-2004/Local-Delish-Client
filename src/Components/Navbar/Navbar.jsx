@@ -49,11 +49,11 @@ const Navbar = () => {
           Contact
         </NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink to="/blog" className="nav-link">
           Blog
         </NavLink>
-      </li>
+      </li> */}
     </>
   );
 

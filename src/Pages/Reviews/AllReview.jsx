@@ -9,6 +9,11 @@ import ErrorPage from "../Error/ErrorPage";
 const AllReview = () => {
   const [search, setSearch] = useState("");
   const [isSearching, setIsSearching] = useState(false);
+  // const [rating, setRating] = useState("");
+  // const [location, setLocation ]=useState("")
+  // const [sort, setSort ]=useState("")
+  
+
   const {
     data: reviews,
     loading,

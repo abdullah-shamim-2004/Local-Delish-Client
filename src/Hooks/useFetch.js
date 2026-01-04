@@ -33,3 +33,4 @@ const useFetch = (endpoint) => {
 };
 
 export default useFetch;
+

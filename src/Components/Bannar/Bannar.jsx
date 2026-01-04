@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -42,7 +41,7 @@ const Bannar = ({ reviews }) => {
                         View Reviews
                       </button>
                     </Link>
-                    <Link to="/">
+                    <Link to="/contact">
                       <button className="px-6 py-2 border border-white rounded-full hover:bg-white hover:text-black transition duration-300">
                         Contact Us
                       </button>

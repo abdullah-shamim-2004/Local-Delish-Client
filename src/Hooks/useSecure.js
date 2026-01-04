@@ -4,14 +4,13 @@ import useAuth from "./useAuth";
 
 //axios instance.
 export const api = axios.create({
-  baseURL: "https://local-delish-server.vercel.app/",
-  // baseURL: "http://localhost:3000/",
+  // baseURL: "https://local-delish-server.vercel.app/",
+  baseURL: "http://localhost:3000/",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-// It will add a token in headers of authorization, but i do not implinent it in server side , because it doesn't have in my requirement. Thank you.
 const useSecure = () => {
   const { user } = useAuth();
   const token = user?.accessToken;

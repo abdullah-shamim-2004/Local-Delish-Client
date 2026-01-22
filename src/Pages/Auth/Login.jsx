@@ -1,6 +1,6 @@
 import React, { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaUser } from "react-icons/fa";
 import AuthContext from "../../Context/AuthContext";
 import { toast, ToastContainer } from "react-toastify";
 
@@ -17,6 +17,51 @@ const Login = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
     UserSignIn(email, password)
+      .then(() => {
+        // Signed in
+        toast("Login Succesfully");
+        Navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+        switch (errorCode) {
+          case "auth/invalid-email":
+            toast.error("Invalid email address!");
+            break;
+          case "auth/user-disabled":
+            toast.error("This account has been disabled!");
+            break;
+          case "auth/user-not-found":
+            toast.error("No account found with this email!");
+            break;
+          case "auth/wrong-password":
+            toast.error("Incorrect password!");
+            break;
+          case "auth/too-many-requests":
+            toast.error("Too many login attempts. Try again later!");
+            break;
+          case "auth/network-request-failed":
+            toast.error("Network error. Check your connection!");
+            break;
+          default:
+            toast.error("Login failed. Please try again!");
+        }
+      });
+  };
+  // Demo user information
+  const DEMO_USER = {
+    user: {
+      email: "abdullahshamim@gmail.com",
+      password: "1234Asdf",
+    },
+  };
+  // Demo user login
+  const handleDemoLogin = (role) => {
+    const demo_user = DEMO_USER[role];
+    // console.log(demo_user);
+    UserSignIn(demo_user.email, demo_user.password)
       .then(() => {
         // Signed in
         toast("Login Succesfully");
@@ -76,7 +121,7 @@ const Login = () => {
             break;
           case "auth/account-exists-with-different-credential":
             toast.error(
-              "This Google account is already linked with another login method!"
+              "This Google account is already linked with another login method!",
             );
             break;
           default:
@@ -180,6 +225,26 @@ const Login = () => {
               </Link>{" "}
             </p>
           </form>
+          <div className="divider">or</div>
+          <div className="text-center flex flex-col items-center justify-between my-5">
+            <h2 className="text-lg font-bold text-base-content">
+              Try a Demo Account.
+            </h2>
+            <div>
+              <button
+                onClick={() => handleDemoLogin("user")}
+                className="group flex flex-col items-center justify-center gap-2 p-4 rounded-2xl
+      bg-base-200/60 backdrop-blur border border-base-300
+      hover:bg-info/10 hover:border-info/40 hover:shadow-lg hover:shadow-info/20
+      transition-all duration-300"
+              >
+                <FaUser className="text-2xl text-info opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all" />
+                <span className="text-[11px]  font-extrabold tracking-wide uppercase">
+                  User
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

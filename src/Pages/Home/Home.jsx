@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <div>
       <div>
-        <Bannar reviews={reviews}></Bannar>
+        <Bannar reviews={reviews?.reviews}></Bannar>
       </div>
       <div className="mx-auto my-8">
         <div className="text-center my-10">

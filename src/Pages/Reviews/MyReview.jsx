@@ -8,18 +8,19 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
 const MyReview = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const api = useSecure();
-  const {
-    data: reviewsData,
-    loading,
-    error,
-  } = useFetch(`/reviews?email=${user?.email}`);
+  const { data: reviewsData, error } = useFetch(
+    `/reviews?email=${user?.email}`
+  );
   const [reviews, setReviews] = useState([]);
+  // console.log(reviews);
 
   useEffect(() => {
-    if (reviewsData) setReviews(reviewsData);
-  }, [reviewsData]);
+    if (user?.email && reviewsData) {
+      setReviews(Array.isArray(reviewsData) ? reviewsData : []);
+    }
+  }, [reviewsData, user]);
 
   if (loading) return <Loader />;
   if (error) return <ErrorPage />;
@@ -50,15 +51,22 @@ const MyReview = () => {
   };
   return (
     <div className="p-6 max-[576px]:p-1.5 max-[576px]:w-fit">
-      <h2 className="text-2xl font-bold mb-4">My Reviews ({reviews.length})</h2>
+      <h2 className="text-2xl font-bold mb-4">
+        {/* My Reviews ({reviews?.length}) */}
+      </h2>
 
-      {reviews.length === 0 ? (
+      {reviews?.length === 0 ? (
         <div className="flex flex-col justify-center items-center h-[60vh] text-center">
           <h2 className="text-4xl font-bold text-gray-600 mb-3">
             No My Review Found!
           </h2>
           <p>Please Add My Review</p>
-          <Link className="btn-primary text-black font-normal bg-primary btn mt-1" to="/add-reviews">Click Me</Link>
+          <Link
+            className="btn-primary text-black font-normal bg-primary btn mt-1"
+            to="/dashboard/add-reviews"
+          >
+            Click Me
+          </Link>
         </div>
       ) : (
         <div className="md:overflow-x-auto max-[576px]:w-fit">

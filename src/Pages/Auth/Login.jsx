@@ -226,7 +226,7 @@ const Login = () => {
             </p>
           </form>
           <div className="divider">or</div>
-          <div className="text-center flex flex-col items-center justify-between my-5">
+          <div className="text-center flex flex-col items-center justify-between my-2">
             <h2 className="text-lg font-bold text-base-content">
               Try a Demo Account.
             </h2>

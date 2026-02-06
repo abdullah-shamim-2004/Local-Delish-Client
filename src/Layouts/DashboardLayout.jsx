@@ -63,7 +63,7 @@ const DashboardLayout = () => {
             {/* Menu */}
             <ul className="menu gap-1 px-3 py-4 text-sm font-medium">
               <li>
-                <NavLink 
+                <NavLink
                   to="/dashboard"
                   end
                   className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:bg-primary/10 hover:text-primary"
@@ -105,15 +105,6 @@ const DashboardLayout = () => {
                   <BsBookmarkHeartFill size={18} />
                   <span className="is-drawer-close:hidden">My Favorites</span>
                 </NavLink>
-              </li>
-
-              <div className="divider my-2"></div>
-
-              <li>
-                <button className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:bg-base-200">
-                  <IoSettingsOutline size={20} />
-                  <span className="is-drawer-close:hidden">Settings</span>
-                </button>
               </li>
             </ul>
           </aside>

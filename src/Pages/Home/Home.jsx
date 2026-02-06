@@ -35,7 +35,7 @@ const Home = () => {
           <div className="w-24 h-1 bg-amber-400 rounded-full mt-4 mx-auto"></div>
         </div>
 
-        <div className="mt-3 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-5">
+        <div className="mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-5">
           {reviews?.reviews?.map((review) => (
             <ReviewCard key={review._id} review={review}></ReviewCard>
           ))}
@@ -43,7 +43,7 @@ const Home = () => {
 
         <div className="flex justify-end">
           <Link to="/reviews">
-            <button className="bg-primary cursor-pointer text-white font-semibold my-2.5  px-8 py-3 rounded-full shadow-md hover:bg-amber-500 hover:scale-105 transition transform duration-300">
+            <button className="bg-primary cursor-pointer text-white font-semibold my-2.5 px-4 py-2  md:px-8 md:py-3 rounded-full shadow-md hover:bg-amber-500 hover:scale-105 transition transform duration-300">
               Show All
             </button>
           </Link>

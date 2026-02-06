@@ -49,11 +49,11 @@ const Navbar = () => {
           Contact
         </NavLink>
       </li>
-      {/* <li>
+      <li>
         <NavLink to="/blog" className="nav-link">
           Blog
         </NavLink>
-      </li> */}
+      </li>
     </>
   );
 
@@ -96,8 +96,11 @@ const Navbar = () => {
 
             {/* Logo */}
             <div className="flex items-center justify-center gap-1.5">
-              <FaUtensils className="text-2xl text-secondary" />
-              <Link to="/" className="normal-case text-2xl font-bold">
+              <FaUtensils className="text-xl md:text-2xl text-secondary" />
+              <Link
+                to="/"
+                className="normal-case text-xl md:text-2xl font-bold"
+              >
                 Local<span className="text-primary">Delish</span>
               </Link>
             </div>
@@ -175,12 +178,6 @@ const Navbar = () => {
               <div>
                 <Link to="/auth/login" className="btn btn-primary btn-sm">
                   Sign In
-                </Link>{" "}
-                <Link
-                  to="/auth/register"
-                  className="btn btn-primary btn-outline btn-sm"
-                >
-                  sign Up
                 </Link>{" "}
               </div>
             )}

@@ -55,7 +55,7 @@ const AddReview = () => {
 
         {/* Title */}
         <h2 className="text-3xl font-bold text-center mb-8">
-          Create <span className="text-purple-500">Your Review</span>
+          Create <span className="text-primary">Your Review</span>
         </h2>
 
         {/* Food Name  */}

@@ -15,25 +15,29 @@ const AllReview = () => {
   const [sort, setSort] = useState("");
   const [page, setPage] = useState(1);
   const limit = 8;
-
+  // Get all review according to filter
   const {
     data: reviews,
     loading,
     error,
   } = useFetch(
-    `/reviews?search=${search}&rating=${rating}&location=${location}&sort=${sort}&page=${page}&limit=${limit}`
+    `/reviews?search=${search}&rating=${rating}&location=${location}&sort=${sort}&page=${page}&limit=${limit}`,
   );
+  // console.log(reviews);
+
+  // Handle the searching
   const handleSearching = (e) => {
     setSearch(e.target.value);
     setIsSearching(true);
   };
 
+  // when searching set timer
   useEffect(() => {
     const timer = setTimeout(() => setIsSearching(false), 400);
     return () => clearTimeout(timer);
   }, [search]);
   const showLoader = loading || isSearching;
-
+  // If error happen then move to user on error page
   if (error) return <ErrorPage></ErrorPage>;
 
   return (
@@ -49,9 +53,9 @@ const AllReview = () => {
         <div className="w-24 h-1 bg-amber-400 rounded-full mt-4"></div>
       </div>
 
-      <div className="my-3.5 mb-4 flex justify-around items-center">
-        <h3 className="text-xl lg:text-2xl font-semibold">
-          (<span>{reviews.length}</span>) Review Found
+      <div className="my-3.5 mb-4 gap-2.5 flex justify-around items-center">
+        <h3 className="hidden md:block md:text-2xl md:font-semibold">
+          (<span>{reviews.total}</span>) Review Found
         </h3>
         <select
           className="select select-bordered"
@@ -114,7 +118,7 @@ const AllReview = () => {
           </h2>
         </div>
       ) : (
-        <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {reviews?.reviews?.map((review) => (
             <ReviewCard key={review._id} review={review}></ReviewCard>
           ))}

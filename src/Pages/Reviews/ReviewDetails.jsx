@@ -16,9 +16,9 @@ const ReviewDetails = () => {
       {loading ? (
         <Loader></Loader>
       ) : (
-        <div className="card card-side mt-2 bg-base-100 shadow-md hover:shadow-lg transition duration-300 rounded-2xl overflow-hidden">
+        <div className="card card-side mt-2 bg-base-100 shadow-md hover:shadow-lg transition duration-300 flex flex-col md:flex-row justify-between rounded-2xl overflow-hidden">
           {/* Image Section */}
-          <figure className="w-1/3">
+          <figure className="md:w-1/3">
             <img
               src={singleReview.foodImage}
               alt={singleReview.foodName}
@@ -26,18 +26,18 @@ const ReviewDetails = () => {
             />
           </figure>
 
-          <div className="card-body  w-2/3 p-6 flex flex-col ">
+          <div className="card-body  md:w-2/3 p-6 flex flex-col ">
             {/* Food */}
             <div>
               <h2 className="text-2xl font-bold text-secondary">
                 {singleReview.foodName}
               </h2>
-              <p className="text-sm text-gray-800">
+              <p className="text-sm text-base-content">
                 {singleReview.restaurantName} —{" "}
                 <span className="italic">{singleReview.location}</span>
               </p>
               {/* Review Text */}
-              <p className="mt-3 text-gray-900 leading-relaxed">
+              <p className="mt-3 text-base-content leading-relaxed">
                 {singleReview.reviewText}
               </p>
             </div>
@@ -52,9 +52,9 @@ const ReviewDetails = () => {
               </div>
 
               {/* Reviewer Info */}
-              <div className="text-right text-sm text-gray-800">
+              <div className="text-right text-sm text-base-content">
                 <p>
-                  <span className="font-semibold text-gray-900">
+                  <span className="font-semibold text-base-content">
                     {singleReview.userName}
                   </span>{" "}
                   ({singleReview.userEmail})

@@ -40,7 +40,7 @@ const ReviewCard = ({ review }) => {
 
     try {
       const res = await api.post("/my-favorites", newfavorite);
-      console.log("Review added:", res.data);
+      // console.log("Review added:", res.data);
       if (res.data.message) {
         toast.info(res.data.message);
       } else {
@@ -56,7 +56,7 @@ const ReviewCard = ({ review }) => {
   return (
     <div
       // data-aos="fade-up"
-      className="bg-white text-gray-800 max-w-lg rounded-2xl shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300 p-5 flex flex-col justify-between"
+      className="bg-base-100 text-gray-800 max-w-lg rounded-2xl shadow-md border border-base-200 hover:shadow-xl transition-all duration-300 p-5 flex flex-col justify-between"
     >
       <ToastContainer />
       <div className="relative overflow-hidden rounded-xl mb-4">
@@ -77,7 +77,7 @@ const ReviewCard = ({ review }) => {
         </button>
       </div>
 
-      <h3 className="text-xl font-semibold text-gray-900 mb-1">{foodName}</h3>
+      <h3 className="text-xl font-semibold text-base-content mb-1">{foodName}</h3>
       <p className="text-sm text-gray-500">{restaurantName}</p>
       <p className="text-xs text-gray-400 mb-2">{location}</p>
 
